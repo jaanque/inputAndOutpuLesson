@@ -3,10 +3,8 @@
 <div class="pokedex-section">
   <h2>Pokemons Disponibles</h2>
   <div class="pokemon-list">
-    @for (p of pokemon; track p.id) {
-      @if (!p.liked) {
-        <app-pokemon [pokemon]="p" (onLike)="updatePokemon($event)"></app-pokemon>
-      }
+    @for (p of availablePokemon; track p.id) {
+      <app-pokemon [pokemon]="p" (onLike)="updatePokemon($event)"></app-pokemon>
     }
   </div>
 </div>
@@ -14,12 +12,10 @@
 <div class="pokedex-section">
   <h2>Pokemons amb Like</h2>
   <div class="pokemon-list">
-    @for (p of pokemon; track p.id) {
-      @if (p.liked) {
-        <app-pokemon [pokemon]="p" (onLike)="updatePokemon($event)"></app-pokemon>
-      }
+    @for (p of likedPokemon; track p.id) {
+      <app-pokemon [pokemon]="p" (onLike)="updatePokemon($event)"></app-pokemon>
     }
-    @if (pokemon.filter(p => p.liked).length === 0) {
+    @if (likedPokemon.length === 0) {
       <p>No hi ha cap Pokémon amb like.</p>
     }
   </div>

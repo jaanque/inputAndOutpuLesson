@@ -33,6 +33,14 @@ export class App {
     { id: 20, name: 'Raticate', url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png', liked: false }
   ];
 
+  get likedPokemon(): Pokemon[] {
+    return this.pokemon.filter(p => p.liked);
+  }
+
+  get availablePokemon(): Pokemon[] {
+    return this.pokemon.filter(p => !p.liked);
+  }
+
   updatePokemon(pokemon: Pokemon): void {
     this.pokemon = this.pokemon.map(p => p.id === pokemon.id ? pokemon : p);
   }
