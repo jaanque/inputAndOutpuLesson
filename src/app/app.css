@@ -1,0 +1,9 @@
+.pokedex-section {
+  margin-bottom: 20px;
+}
+
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
