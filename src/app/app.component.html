@@ -1,0 +1,22 @@
+<h1>Pokédex</h1>
+
+<div class="pokedex-section">
+  <h2>Pokemons Disponibles</h2>
+  <div class="pokemon-list">
+    @for (p of pokemonsDisponibles; track p.id) {
+      <app-pokemon [pokemon]="p" (alFerLike)="actualitzarPokemon($event)"></app-pokemon>
+    }
+  </div>
+</div>
+
+<div class="pokedex-section">
+  <h2>Pokemons amb Like</h2>
+  <div class="pokemon-list">
+    @for (p of pokemonsPreferits; track p.id) {
+      <app-pokemon [pokemon]="p" (alFerLike)="actualitzarPokemon($event)"></app-pokemon>
+    }
+    @if (pokemonsPreferits.length === 0) {
+      <p>No hi ha cap Pokémon amb like.</p>
+    }
+  </div>
+</div>

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { Pokemon } from './interfaces/pokemon.interface';
-import { RouterOutlet } from '@angular/router';
-import { PokemonComponent } from './pokemon/pokemon';
+import { Pokemon } from './interficies/pokemon.interficie';
+import { PokemonComponent } from './component-pokemon/pokemon.component';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, PokemonComponent],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [PokemonComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
-export class App {
-  pokemon: Pokemon[] = [
+export class AppComponent {
+  pokemons: Pokemon[] = [
     { id: 1, name: 'Bulbasaur', url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png', liked: false },
     { id: 2, name: 'Ivysaur', url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png', liked: false },
     { id: 3, name: 'Venusaur', url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png', liked: false },
@@ -33,15 +33,15 @@ export class App {
     { id: 20, name: 'Raticate', url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png', liked: false }
   ];
 
-  get likedPokemon(): Pokemon[] {
-    return this.pokemon.filter(p => p.liked);
+  get pokemonsPreferits(): Pokemon[] {
+    return this.pokemons.filter(p => p.liked);
   }
 
-  get availablePokemon(): Pokemon[] {
-    return this.pokemon.filter(p => !p.liked);
+  get pokemonsDisponibles(): Pokemon[] {
+    return this.pokemons.filter(p => !p.liked);
   }
 
-  updatePokemon(pokemon: Pokemon): void {
-    this.pokemon = this.pokemon.map(p => p.id === pokemon.id ? pokemon : p);
+  actualitzarPokemon(pokemon: Pokemon): void {
+    this.pokemons = this.pokemons.map(p => p.id === pokemon.id ? pokemon : p);
   }
 }
